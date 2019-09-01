@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:xmas/market.dart';
 import 'package:xmas/market_repository.dart';
 import 'package:xmas/regions.dart';
@@ -13,18 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
+      theme: theme.theme,
       home: MyHomePage(),
     );
   }
@@ -42,6 +32,14 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return buildScaffold();
   }
+
+  @override
+  void initState() {
+    super.initState();
+    selectedDate = initialDate;
+  }
+
+  DateTime selectedDate;
 
   Scaffold buildScaffoldOld() {
     return Scaffold(
@@ -81,9 +79,77 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget buildScaffold() {
     return Scaffold(
       body: Column(
-        children: <Widget>[
-          _buildHeader(),
-        ],
+        children: <Widget>[_buildHeader(), _buildDatePicker()],
+      ),
+    );
+  }
+
+  Widget _buildDatePicker() {
+    return Container(
+      height: 100,
+      child: PageView.builder(
+        itemBuilder: (context, position) {
+          return Row(
+            children: <Widget>[
+              SizedBox.fromSize(
+                size: Size.fromWidth(16),
+              ),
+              _buildDateCard(position, 0),
+              _buildDateCard(position, 1),
+              _buildDateCard(position, 2),
+              _buildDateCard(position, 3),
+              _buildDateCard(position, 4),
+              SizedBox.fromSize(
+                size: Size.fromWidth(16),
+              ),
+            ],
+          );
+        },
+      ),
+    );
+  }
+
+  final initialDate = DateTime(2019, 11, 1);
+  final monthFormat = DateFormat('MMM');
+  final dayOfWeekFormat = DateFormat('EEE');
+
+  Widget _buildDateCard(int position, int i) {
+    final date = initialDate.add(Duration(days: position * 5 + i));
+    final isSelected = selectedDate == date;
+    return Expanded(
+      child: Card(
+        color: isSelected ? theme.colorRed : Colors.white,
+        child: InkWell(
+          onTap: () {
+            setState(() {
+              selectedDate = date;
+            });
+          },
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Text(
+                monthFormat.format(date),
+                style: TextStyle(
+                    fontSize: 12,
+                    color: isSelected ? Colors.white : Colors.black),
+              ),
+              Text(
+                date.day.toString(),
+                style: TextStyle(
+                    fontSize: 16,
+                    color: isSelected ? Colors.white : Colors.black),
+              ),
+              Text(
+                dayOfWeekFormat.format(date),
+                style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: isSelected ? Colors.white : Colors.black),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -93,7 +159,7 @@ class _MyHomePageState extends State<MyHomePage> {
       children: <Widget>[
         Image.asset('assets/background.png'),
         Container(
-          height: 300,
+          height: 270,
           child: FlareActor(
             "assets/snow.flr",
             alignment: Alignment.topCenter,
