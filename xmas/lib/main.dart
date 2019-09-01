@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:xmas/market.dart';
 import 'package:xmas/market_repository.dart';
 import 'package:xmas/regions.dart';
+import 'package:flare_flutter/flare_actor.dart';
+import 'package:xmas/theme.dart' as theme;
 
 void main() => runApp(MyApp());
 
@@ -36,11 +38,16 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
+    return buildScaffold();
+  }
+
+  Scaffold buildScaffoldOld() {
     return Scaffold(
-      appBar: AppBar(title: Text('Weihnachtsmarkt'),),
+      appBar: AppBar(
+        title: Text('Weihnachtsmarkt'),
+      ),
       body: FutureBuilder(
         future: MarketRepository().getMarkets(Region.bayern),
         builder: (context, snapshot) {
@@ -60,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   itemCount: markets.length,
                   itemBuilder: (context, position) {
                     return Text(markets[position].name);
-              });
+                  });
               break;
             default:
               return Container();
@@ -68,6 +75,43 @@ class _MyHomePageState extends State<MyHomePage> {
           }
         },
       ),
+    );
+  }
+
+  Widget buildScaffold() {
+    return Scaffold(
+      body: Column(
+        children: <Widget>[
+          _buildHeader(),
+        ],
+      ),
+    );
+  }
+
+  Stack _buildHeader() {
+    return Stack(
+      children: <Widget>[
+        Image.asset('assets/background.png'),
+        Container(
+          height: 300,
+          child: FlareActor(
+            "assets/snow.flr",
+            alignment: Alignment.topCenter,
+            fit: BoxFit.fill,
+            animation: "snow",
+          ),
+        ),
+        SafeArea(
+            child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Center(
+            child: Text(
+              'Weihnachtsmarkt',
+              style: theme.headerTextStyle,
+            ),
+          ),
+        )),
+      ],
     );
   }
 }
