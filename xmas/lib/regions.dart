@@ -1,0 +1,4 @@
+enum Region {
+  berlin,
+  bayern,
+}
