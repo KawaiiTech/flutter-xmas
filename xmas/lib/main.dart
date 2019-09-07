@@ -1,9 +1,8 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_web/material.dart';
 import 'package:intl/intl.dart';
 import 'package:xmas/market.dart';
 import 'package:xmas/market_repository.dart';
 import 'package:xmas/regions.dart';
-import 'package:flare_flutter/flare_actor.dart';
 import 'package:xmas/theme.dart' as theme;
 
 void main() => runApp(MyApp());
@@ -37,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     selectedDate = initialDate;
-    MarketRepository().getMarkets(Region.bayern).then((markets) {
+    MarketRepository().getMarkets().then((markets) {
       setState(() {
         this.markets = markets;
       });
@@ -49,12 +48,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget buildScaffold() {
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          _buildHeader(),
-          _buildDatePicker(),
-//          _buildMarketDisplay(),
-        ],
+      body: Container(
+        width: 400,
+        child: Column(
+          children: <Widget>[
+            _buildHeader(),
+            _buildDatePicker(),
+            _buildMarketDisplay(),
+          ],
+        ),
       ),
     );
   }
@@ -132,15 +134,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Stack _buildHeader() {
     return Stack(
       children: <Widget>[
-        Image.asset('assets/background.png'),
-        Container(
+        Image.asset(
+          'background.png',
           height: 270,
-          child: FlareActor(
-            "assets/snow.flr",
-            alignment: Alignment.topCenter,
-            fit: BoxFit.fill,
-            animation: "snow",
-          ),
         ),
         SafeArea(
             child: Padding(

@@ -17,21 +17,30 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
-  flutter:
-    sdk: flutter
+  flutter_web: any
+  flutter_web_ui: any
 
   csv: ^4.0.3
   intl: ^0.16.0
-  flare_flutter: ^1.5.7
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^0.1.2
+#  flare_flutter: ^1.5.7
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
+  # Enables the `pub run build_runner` command
+  build_runner: ^1.4.0
+  # Includes the JavaScript compilers
+  build_web_compilers: ^2.0.0
 
+# flutter_web packages are not published to pub.dartlang.org
+# These overrides tell the package tools to get them from GitHub
+dependency_overrides:
+  flutter_web:
+    git:
+      url: https://github.com/flutter/flutter_web
+      path: packages/flutter_web
+  flutter_web_ui:
+    git:
+      url: https://github.com/flutter/flutter_web
+      path: packages/flutter_web_ui
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

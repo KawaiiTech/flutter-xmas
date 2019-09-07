@@ -1,0 +1,18 @@
+[
+  {
+    "family": "Varela",
+    "fonts": [
+      {
+        "asset": "fonts/VarelaRound-Regular.ttf"
+      }
+    ]
+  },
+  {
+    "family": "Christmas-Bold",
+    "fonts": [
+      {
+        "asset": "fonts/MountainsofChristmas-Bold.ttf"
+      }
+    ]
+  }
+]
