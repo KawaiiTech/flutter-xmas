@@ -14,3 +14,8 @@ final headerTextStyle = TextStyle(
   fontFamily: 'Christmas-Bold',
   color: Colors.white,
 );
+
+final marketTextStyle = TextStyle(
+  fontSize: 18,
+  fontFamily: 'Varela',
+);
