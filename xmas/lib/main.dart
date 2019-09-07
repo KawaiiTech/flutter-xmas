@@ -48,14 +48,16 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget buildScaffold() {
     return Scaffold(
-      body: Container(
-        width: 400,
-        child: Column(
-          children: <Widget>[
-            _buildHeader(),
-            _buildDatePicker(),
-            _buildMarketDisplay(),
-          ],
+      body: Center(
+        child: Container(
+          width: 400,
+          child: Column(
+            children: <Widget>[
+              _buildHeader(),
+              _buildDatePicker(),
+              _buildMarketDisplay(),
+            ],
+          ),
         ),
       ),
     );
