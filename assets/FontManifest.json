@@ -1,18 +1,1 @@
-[
-  {
-    "family": "Varela",
-    "fonts": [
-      {
-        "asset": "fonts/VarelaRound-Regular.ttf"
-      }
-    ]
-  },
-  {
-    "family": "Christmas-Bold",
-    "fonts": [
-      {
-        "asset": "fonts/MountainsofChristmas-Bold.ttf"
-      }
-    ]
-  }
-]
+[{"fonts":[{"asset":"fonts/MaterialIcons-Regular.ttf"}],"family":"MaterialIcons"},{"family":"Christmas","fonts":[{"asset":"fonts/MountainsofChristmas-Regular.ttf"}]},{"family":"Christmas-Bold","fonts":[{"asset":"fonts/MountainsofChristmas-Bold.ttf"}]},{"family":"Varela","fonts":[{"asset":"fonts/VarelaRound-Regular.ttf"}]}]
