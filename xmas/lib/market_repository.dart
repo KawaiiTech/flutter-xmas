@@ -7,7 +7,6 @@ class MarketRepository {
   Future<List<Market>> getMarkets() async {
     final input = await rootBundle.loadString('assets/bayern.csv');
     final fields = const CsvToListConverter().convert(input);
-    print(fields);
     return fields.map((row) => _toMarket(row)).toList();
   }
 }
