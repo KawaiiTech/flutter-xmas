@@ -1,8 +1,7 @@
-import 'package:flutter_web/material.dart';
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:xmas/market.dart';
 import 'package:xmas/market_repository.dart';
-import 'package:xmas/regions.dart';
 import 'package:xmas/theme.dart' as theme;
 
 void main() => runApp(MyApp());
@@ -137,7 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Stack(
       children: <Widget>[
         Image.asset(
-          'background.png',
+          'assets/background.png',
           height: 270,
         ),
         SafeArea(

@@ -1,12 +1,11 @@
-import 'package:flutter_web/services.dart';
+import 'package:flutter/services.dart';
 import 'package:xmas/market.dart';
-import 'package:xmas/regions.dart';
 import 'package:csv/csv.dart';
 import 'package:intl/intl.dart';
 
 class MarketRepository {
   Future<List<Market>> getMarkets() async {
-    final input = await rootBundle.loadString('bayern.csv');
+    final input = await rootBundle.loadString('assets/bayern.csv');
     final fields = const CsvToListConverter().convert(input);
     print(fields);
     return fields.map((row) => _toMarket(row)).toList();
