@@ -175,13 +175,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget _buildMarketCard(List<Market> marketsOnDate, int position) {
     return Card(
-            child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Text(
-            marketsOnDate[position].name,
-            style: theme.marketTextStyle,
-          ),
-        ));
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Text(
+          marketsOnDate[position].name,
+          style: theme.marketTextStyle,
+        ),
+      ),
+    );
   }
 
   bool _isMarketOnDate(Market market) {
