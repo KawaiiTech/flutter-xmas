@@ -1,9 +1,8 @@
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:xmas/market.dart';
 import 'package:xmas/market_repository.dart';
-import 'package:xmas/regions.dart';
-import 'package:flare_flutter/flare_actor.dart';
 import 'package:xmas/theme.dart' as theme;
 
 void main() => runApp(MyApp());
@@ -37,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     selectedDate = initialDate;
-    MarketRepository().getMarkets(Region.bayern).then((markets) {
+    MarketRepository().getMarkets().then((markets) {
       setState(() {
         this.markets = markets;
       });
