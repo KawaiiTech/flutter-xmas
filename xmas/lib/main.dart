@@ -142,15 +142,16 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         SafeArea(
-            child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Center(
-            child: Text(
-              'Weihnachtsmarkt',
-              style: theme.headerTextStyle,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(
+              child: Text(
+                'Weihnachtsmarkt',
+                style: theme.headerTextStyle,
+              ),
             ),
           ),
-        )),
+        ),
       ],
     );
   }
