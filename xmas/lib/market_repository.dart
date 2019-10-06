@@ -17,5 +17,9 @@ final format = DateFormat("dd.MM.yyyy");
 Market _toMarket(List<dynamic> row) {
   print(row);
   return Market(
-      name: row[0], url: row[1], startDate: format.parse(row[2].substring(3)));
+      name: row[0],
+      url: row[1],
+      startDate: format.parse(
+        row[2].substring(3),
+      ));
 }
