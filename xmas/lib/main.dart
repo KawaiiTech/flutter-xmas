@@ -58,6 +58,34 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  Stack _buildHeader() {
+    return Stack(
+      children: <Widget>[
+        Image.asset('assets/background.png'),
+        Container(
+          height: 270,
+          child: FlareActor(
+            "assets/snow.flr",
+            alignment: Alignment.topCenter,
+            fit: BoxFit.fill,
+            animation: "snow",
+          ),
+        ),
+        SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(
+              child: Text(
+                'Weihnachtsmarkt',
+                style: theme.headerTextStyle,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
   Widget _buildDatePicker() {
     return Container(
       height: 100,
@@ -125,34 +153,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
-    );
-  }
-
-  Stack _buildHeader() {
-    return Stack(
-      children: <Widget>[
-        Image.asset('assets/background.png'),
-        Container(
-          height: 270,
-          child: FlareActor(
-            "assets/snow.flr",
-            alignment: Alignment.topCenter,
-            fit: BoxFit.fill,
-            animation: "snow",
-          ),
-        ),
-        SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Center(
-              child: Text(
-                'Weihnachtsmarkt',
-                style: theme.headerTextStyle,
-              ),
-            ),
-          ),
-        ),
-      ],
     );
   }
 
