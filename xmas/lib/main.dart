@@ -118,41 +118,44 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget _buildDateCard(int position, int i) {
     final date = initialDate.add(Duration(days: position * 5 + i));
     final isSelected = selectedDate == date;
+
     return Expanded(
       child: Card(
         color: isSelected ? theme.colorRed : Colors.white,
         child: InkWell(
+          child: _buildCardDetails(date, isSelected),
           onTap: () {
             setState(() {
               selectedDate = date;
             });
           },
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Text(
-                monthFormat.format(date),
-                style: TextStyle(
-                    fontSize: 12,
-                    color: isSelected ? Colors.white : Colors.black),
-              ),
-              Text(
-                date.day.toString(),
-                style: TextStyle(
-                    fontSize: 16,
-                    color: isSelected ? Colors.white : Colors.black),
-              ),
-              Text(
-                dayOfWeekFormat.format(date),
-                style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: isSelected ? Colors.white : Colors.black),
-              ),
-            ],
-          ),
         ),
       ),
+    );
+  }
+
+  Widget _buildCardDetails(DateTime date, bool isSelected) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        Text(
+          monthFormat.format(date),
+          style: TextStyle(
+              fontSize: 12, color: isSelected ? Colors.white : Colors.black),
+        ),
+        Text(
+          date.day.toString(),
+          style: TextStyle(
+              fontSize: 16, color: isSelected ? Colors.white : Colors.black),
+        ),
+        Text(
+          dayOfWeekFormat.format(date),
+          style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+              color: isSelected ? Colors.white : Colors.black),
+        ),
+      ],
     );
   }
 
