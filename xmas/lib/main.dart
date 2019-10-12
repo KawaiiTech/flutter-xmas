@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: <Widget>[
           _buildHeader(),
           _buildDatePicker(),
-//          _buildMarketDisplay(),
+          _buildMarketDisplay(),
         ],
       ),
     );
