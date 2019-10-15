@@ -5,10 +5,9 @@ import 'package:xmas/market.dart';
 import 'package:xmas/market_repository.dart';
 import 'package:xmas/theme.dart' as theme;
 
-void main() => runApp(MyApp());
+void main() => runApp(XmasApp());
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class XmasApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -27,6 +26,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final initialDate = DateTime(2019, 11, 1);
+  DateTime selectedDate;
+  List<Market> markets = [];
+
   @override
   Widget build(BuildContext context) {
     return buildScaffold();
@@ -43,16 +46,12 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  DateTime selectedDate;
-  List<Market> markets = [];
-
   Widget buildScaffold() {
     return Scaffold(
       body: Column(
         children: <Widget>[
           _buildHeader(),
           _buildDatePicker(),
-//          _buildMarketDisplay(),
         ],
       ),
     );
@@ -76,8 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: const EdgeInsets.all(8.0),
             child: Center(
               child: Text(
-                'Weihnachtsmarkt',
-                style: theme.headerTextStyle,
+                'Christmas Markets',
               ),
             ),
           ),
@@ -111,7 +109,6 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  final initialDate = DateTime(2019, 11, 1);
   final monthFormat = DateFormat('MMM');
   final dayOfWeekFormat = DateFormat('EEE');
 
@@ -160,25 +157,15 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget _buildMarketDisplay() {
-    final marketsOnDate = markets.where(_isMarketOnDate).toList();
-    marketsOnDate.sort((a, b) => b.startDate.compareTo(a.startDate));
-    return Expanded(
-      child: ListView.builder(
-        padding: EdgeInsets.all(16),
-        itemCount: marketsOnDate.length,
-        itemBuilder: (context, position) {
-          return _buildMarketCard(marketsOnDate, position);
-        },
-      ),
-    );
+    return Container();
   }
 
-  Widget _buildMarketCard(List<Market> marketsOnDate, int position) {
+  Widget _buildMarketCard(Market market) {
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Text(
-          marketsOnDate[position].name,
+          market.name,
           style: theme.marketTextStyle,
         ),
       ),
@@ -191,3 +178,15 @@ class _MyHomePageState extends State<MyHomePage> {
         startDate.isBefore(selectedDate);
   }
 }
+
+//    final marketsOnDate = markets.where(_isMarketOnDate).toList();
+//    marketsOnDate.sort((a, b) => b.startDate.compareTo(a.startDate));
+//    return Expanded(
+//      child: ListView.builder(
+//        padding: EdgeInsets.all(16),
+//        itemCount: marketsOnDate.length,
+//        itemBuilder: (context, position) {
+//          return _buildMarketCard(marketsOnDate, position);
+//        },
+//      ),
+//    );
