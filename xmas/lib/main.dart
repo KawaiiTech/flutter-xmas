@@ -31,11 +31,6 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Market> markets = [];
 
   @override
-  Widget build(BuildContext context) {
-    return buildScaffold();
-  }
-
-  @override
   void initState() {
     super.initState();
     selectedDate = initialDate;
@@ -46,7 +41,8 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  Widget buildScaffold() {
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: <Widget>[
