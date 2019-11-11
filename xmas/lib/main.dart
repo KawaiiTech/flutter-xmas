@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: <Widget>[
           _buildHeader(),
           _buildDatePicker(),
-//          _buildMarketDisplay(),
+          _buildMarketDisplay(),
         ],
       ),
     );
@@ -111,7 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  final initialDate = DateTime(2019, 11, 1);
+  final initialDate = DateTime(2019, 11, 16);
   final monthFormat = DateFormat('MMM');
   final dayOfWeekFormat = DateFormat('EEE');
 
