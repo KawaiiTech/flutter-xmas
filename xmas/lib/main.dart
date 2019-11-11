@@ -52,7 +52,6 @@ class _MyHomePageState extends State<MyHomePage> {
         children: <Widget>[
           _buildHeader(),
           _buildDatePicker(),
-          _buildMarketDisplay(),
         ],
       ),
     );
@@ -76,8 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: const EdgeInsets.all(8.0),
             child: Center(
               child: Text(
-                'Weihnachtsmarkt',
-                style: theme.headerTextStyle,
+                'Christmas Markets',
               ),
             ),
           ),
@@ -160,17 +158,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget _buildMarketDisplay() {
-    final marketsOnDate = markets.where(_isMarketOnDate).toList();
-    marketsOnDate.sort((a, b) => b.startDate.compareTo(a.startDate));
-    return Expanded(
-      child: ListView.builder(
-        padding: EdgeInsets.all(16),
-        itemCount: marketsOnDate.length,
-        itemBuilder: (context, position) {
-          return _buildMarketCard(marketsOnDate, position);
-        },
-      ),
-    );
+    return Container();
   }
 
   Widget _buildMarketCard(List<Market> marketsOnDate, int position) {
@@ -191,3 +179,25 @@ class _MyHomePageState extends State<MyHomePage> {
         startDate.isBefore(selectedDate);
   }
 }
+
+
+
+
+
+
+
+//  Widget _buildMarketDisplay() {
+//    final marketsOnDate = markets.where(_isMarketOnDate).toList();
+//    marketsOnDate.sort((a, b) => b.startDate.compareTo(a.startDate));
+//    return Expanded(
+//      child: ListView.builder(
+//        padding: EdgeInsets.all(16),
+//        itemCount: marketsOnDate.length,
+//        itemBuilder: (context, position) {
+//          return _buildMarketCard(marketsOnDate, position);
+//        },
+//      ),
+//    );
+//  }
+
+
