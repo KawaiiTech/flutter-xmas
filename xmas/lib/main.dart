@@ -161,12 +161,12 @@ class _MyHomePageState extends State<MyHomePage> {
     return Container();
   }
 
-  Widget _buildMarketCard(List<Market> marketsOnDate, int position) {
+  Widget _buildMarketCard(Market market) {
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Text(
-          marketsOnDate[position].name,
+          market.name,
           style: theme.marketTextStyle,
         ),
       ),
@@ -179,12 +179,6 @@ class _MyHomePageState extends State<MyHomePage> {
         startDate.isBefore(selectedDate);
   }
 }
-
-
-
-
-
-
 
 //  Widget _buildMarketDisplay() {
 //    final marketsOnDate = markets.where(_isMarketOnDate).toList();
@@ -199,5 +193,3 @@ class _MyHomePageState extends State<MyHomePage> {
 //      ),
 //    );
 //  }
-
-
