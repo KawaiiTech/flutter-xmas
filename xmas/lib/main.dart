@@ -143,7 +143,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Center(
-            child: Text(
+            child: SelectableText(
               'Weihnachtsmarkt',
               style: theme.headerTextStyle,
             ),
@@ -164,7 +164,7 @@ class _MyHomePageState extends State<MyHomePage> {
           return Card(
               child: Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Text(
+            child: SelectableText(
               marketsOnDate[position].name,
               style: theme.marketTextStyle,
             ),
